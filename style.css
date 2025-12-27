@@ -1,38 +1,125 @@
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 20px;
-  margin-top: 20px;
+/* CARKEYPRO SYSTEM - MASTER STYLES 
+  Este CSS controla el Modo Claro, Oscuro y el efecto Glassmorphism 
+*/
+
+:root {
+  /* VARIABLES MODO OSCURO (Default) */
+  --bg-body: #050505;
+  --sidebar-bg: rgba(20, 20, 20, 0.6);
+  --text-main: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.6);
+  --primary: #00FF00; /* Verde Neón */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  --blur: blur(20px);
+  --input-bg: rgba(255, 255, 255, 0.05);
 }
 
-.cierre-card {
-  background: var(--glass);
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  border: 1px solid var(--accent-color);
-  margin-bottom: 20px;
+[data-theme="light"] {
+  /* VARIABLES MODO CLARO */
+  --bg-body: #f0f2f5;
+  --sidebar-bg: rgba(255, 255, 255, 0.7);
+  --text-main: #1a1a1a;
+  --text-dim: #555555;
+  --primary: #008000; /* Verde Bosque */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 128, 0, 0.2);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  --input-bg: rgba(0, 0, 0, 0.05);
 }
 
-.monto-total {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--accent-color);
+/* --- ESTILOS GENERALES --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.date-input {
-  background: var(--glass);
-  border: 1px solid var(--accent-color);
-  color: white;
-  padding: 8px;
+body {
+  background-color: var(--bg-body) !important;
+  color: var(--text-main) !important;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* --- CONTENEDORES GLASS --- */
+.glass-panel, .content-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  color: var(--text-main);
+}
+
+/* --- TABLAS MODERNAS --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  color: var(--primary);
+  border-bottom: 2px solid var(--glass-border);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 0.9rem;
+}
+
+tr:hover {
+  background: rgba(var(--primary), 0.05);
+}
+
+/* --- INPUTS Y FORMULARIOS --- */
+input, select, textarea {
+  background: var(--input-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 10px 15px;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* --- BOTONES --- */
+.btn-primary {
+  background: var(--primary);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
   border-radius: 10px;
 }
-
-.table-wrapper {
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-table { width: 100%; border-collapse: collapse; }
-th { text-align: left; padding: 10px; border-bottom: 1px solid var(--glass); color: var(--accent-color); }
-td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
